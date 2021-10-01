@@ -17,7 +17,7 @@ jobs:
   print_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
-      steps:
+    steps:
       - checkout
       - run:
         name: "Print my saved output"
@@ -31,4 +31,3 @@ jobs:
       - print_hello_world_output
         requires:
           -save_hello_world_output
-
