@@ -10,7 +10,7 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - commit
+      - checkout
       - run:
           name: "do Print Hello"
           command: "echo Hello"  
@@ -18,7 +18,7 @@ jobs:
     docker:
       - image:  circleci/node:13.8.0
     steps:
-      - commit 
+      - checkout 
       - run:
           name: "do Print World"
           command: "echo World"
@@ -30,3 +30,4 @@ workflows:
       - welcome/run
       - print_hello
       - print_world
+          requires:  print_hello
