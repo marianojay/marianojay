@@ -6,38 +6,29 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 # Orchestrate or schedule a set of jobs
 jobs:
-  print_hello:
+  save_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
       - run:
-          name: "do Print Hello"
-          command: "echo Hello"  
-  print_world:
+          name: "Print Hello to Out"
+          command: echo "Hello Output" > output.txt 
+  print_hello_world_output:
     docker:
-      - image:  circleci/node:13.8.0
-    steps:
-      - checkout 
+      - image: circleci/node:13.8.0
+      steps:
+      - checkout
       - run:
-          name: "do Print World"
-          command: "echo World"
-  print_myname:
-    docker:
-      - image:  circleci/node:13.8.0
-    steps:
-      - checkout 
-      - run:
-          name: "do Print my env var"
-          command: echo ${MY_ENV_VAR}
-workflows:
+        name: "Print my saved output"
+        command: cat output.txt
+  workflows:
   # Name the workflow "welcome"
   welcome:
-    # Run the welcome/run job in its own container
+    # Run the save job in its own container
     jobs:
-      - welcome/run
-      - print_hello
-      - print_world:
-          requires:  
-            - print_hello
-      - print_myname
+      - save_hello_world_output
+      - print_hello_world_output
+        requires:
+          -save_hello_world_output
+
