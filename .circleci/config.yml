@@ -13,8 +13,6 @@ jobs:
       - checkout
       - persist_to_workspace:
           root: /tmp/workspace
-          paths:
-              - /*
       - run:
           name: "Print Hello to Out"
           command: echo "Hello Output" > /tmp/workspace/output.txt 
