@@ -12,22 +12,22 @@ jobs:
     steps:
       - checkout
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: /tmp/
           paths:
-              - files
+              - output.txt
       - run:
           name: "Print Hello to Out"
-          command: echo "Hello Output" > /tmp/workspace/files/output.txt 
+          command: echo "Hello Output" > /tmp/output.txt 
   print_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp/workspace
+          at: /tmp
       - run:
           name: "Print my saved output"
-          command: cat /tmp/thisWorkspace/files/output.txt
+          command: cat /tmp/output.txt
 workflows:
 # Name the workflow "welcome"
   welcome:
