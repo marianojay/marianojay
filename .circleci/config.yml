@@ -8,14 +8,14 @@ orbs:
 jobs:
   print_hello:
     docker:
-      - Image: circleci/node:13.8.0
+      - image: circleci/node:13.8.0
     steps:
       run:
         name: "do Print Hello"
         command: "echo Hello"  
   print_world:
     docker:
-      - Image:  circleci/node:13.8.0
+      - image:  circleci/node:13.8.0
     steps:
       run:
         name: "do Print WOrld"
