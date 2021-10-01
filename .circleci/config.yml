@@ -24,10 +24,10 @@ jobs:
           command: cat output.txt
   workflows:
   # Name the workflow "welcome"
-  welcome:
-    # Run the save job in its own container
-    jobs:
-      - save_hello_world_output
-      - print_hello_world_output
-        requires:
-          - save_hello_world_output
+    welcome:
+      # Run the save job in its own container
+      jobs:
+        - save_hello_world_output
+        - print_hello_world_output
+          requires:
+            - save_hello_world_output
