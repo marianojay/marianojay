@@ -37,6 +37,11 @@ jobs:
           name: "Print my saved output"
           command: cat /tmp/output.txt
       - print_pipeline_id
+      - run: return 1
+      - run:
+          name: Do Something on Failed Test
+          command: "echo it failed"
+          when: on_fail
 
 workflows:
 # Name the workflow "welcome"
